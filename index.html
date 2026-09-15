@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indian Ad Archive — V1</title>
+<meta name="description" content="A growing archive of great Indian advertising. Browse by decade, brand, agency and creative.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f2ea;--paper:#fffdf7;--ink:#171717;--muted:#77736b;--line:#d9d3c8;--accent:#e44b2f;--soft:#ece7dd;--shadow:0 10px 35px rgba(30,25,15,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif}a{color:inherit}
+header{border-bottom:1px solid var(--line);background:rgba(245,242,234,.95);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+.nav{max-width:1280px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:"Playfair Display",serif;font-size:25px;font-weight:700;letter-spacing:-.5px}.logo span{color:var(--accent)}
+.nav small{font-family:"DM Mono";color:var(--muted)}
+.hero{max-width:1280px;margin:auto;padding:70px 24px 35px;display:grid;grid-template-columns:1.2fr .8fr;gap:50px}
+h1{font-family:"Playfair Display";font-size:clamp(52px,8vw,108px);line-height:.88;letter-spacing:-4px;margin:0 0 25px}
+.hero p{font-size:18px;line-height:1.6;max-width:650px;color:#4e4a43}
+.stat{border-left:2px solid var(--accent);padding:10px 0 10px 24px;align-self:end}.stat strong{font-size:64px;font-family:"DM Mono";display:block}.stat span{color:var(--muted)}
+.controls{max-width:1280px;margin:auto;padding:18px 24px 30px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px}
+input,select{font:inherit;border:1px solid var(--line);background:var(--paper);padding:14px 15px;border-radius:4px;outline:none}input:focus,select:focus{border-color:var(--accent)}
+.main{max-width:1280px;margin:auto;padding:0 24px 80px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:18px 0;margin-bottom:18px}.toolbar .count{font-family:"DM Mono";font-size:13px;color:var(--muted)}
+.random{border:1px solid var(--ink);background:var(--ink);color:white;padding:11px 16px;border-radius:3px;cursor:pointer;font-weight:700}.random:hover{background:var(--accent);border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);min-height:310px;padding:22px;display:flex;flex-direction:column;position:relative;transition:.18s transform,.18s box-shadow}.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.meta{font-family:"DM Mono";font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:flex;justify-content:space-between}.year{color:var(--accent)}
+.card h2{font-family:"Playfair Display";font-size:29px;line-height:1.02;margin:24px 0 8px;letter-spacing:-.6px}.brand{font-weight:700;font-size:14px}.credit{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.45}.why{font-size:13px;line-height:1.5;color:#4d4942;margin:18px 0}
+.cardfoot{margin-top:auto;display:flex;gap:8px;align-items:center}.watch{background:var(--accent);color:white;text-decoration:none;padding:11px 13px;font-weight:700;font-size:13px;border-radius:3px}.seen{font-family:"DM Mono";font-size:11px;border:1px solid var(--line);padding:10px 9px;background:transparent;cursor:pointer;border-radius:3px}.seen.active{background:#dcebd9;border-color:#a7c8a0}
+.empty{padding:70px;text-align:center;color:var(--muted);border:1px dashed var(--line)}
+footer{border-top:1px solid var(--line);padding:35px 24px;color:var(--muted);font-size:13px}.footin{max-width:1280px;margin:auto;display:flex;justify-content:space-between;gap:20px}
+.modal{position:fixed;inset:0;background:rgba(20,18,15,.65);display:none;align-items:center;justify-content:center;padding:20px;z-index:30}.modal.open{display:flex}.modalbox{background:var(--paper);max-width:720px;width:100%;padding:32px;box-shadow:0 30px 80px rgba(0,0,0,.25)}.close{float:right;border:0;background:none;font-size:28px;cursor:pointer}.modalbox h2{font-family:"Playfair Display";font-size:42px;margin:15px 0 8px}.modalbox .biglink{display:inline-block;margin-top:20px;background:var(--accent);color:white;padding:14px 18px;text-decoration:none;font-weight:700}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.nav{padding:14px 16px}.hero{padding:45px 16px 25px}.main,.controls{padding-left:16px;padding-right:16px}.controls{grid-template-columns:1fr}.grid{grid-template-columns:1fr}h1{letter-spacing:-2px}.footin{flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo">INDIAN AD <span>ARCHIVE</span></div><small>V1 · A PERSONAL COLLECTION</small></div></header>
+
+<section class="hero">
+  <div>
+    <h1>Good ads<br>deserve<br>to survive.</h1>
+    <p>A growing, searchable archive of Indian advertising worth studying — from Lalitaji and Hamara Bajaj to ZooZoos, CRED and beyond.</p>
+  </div>
+  <div class="stat"><strong id="total">0</strong><span>films in the archive</span><br><br><span>Filter it. Find it. Watch it. Build your own advertising education.</span></div>
+</section>
+
+<section class="controls">
+  <input id="search" placeholder="Search brand, campaign, agency, creative...">
+  <select id="era"><option value="">All decades</option></select>
+  <select id="brand"><option value="">All brands</option></select>
+  <select id="agency"><option value="">All agencies</option></select>
+  <select id="watched"><option value="">All films</option><option value="no">Unwatched</option><option value="yes">Watched</option></select>
+</section>
+
+<main class="main">
+  <div class="toolbar"><div class="count" id="count"></div><button class="random" id="random">↗ SHOW ME SOMETHING GREAT</button></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer><div class="footin"><div>INDIAN AD ARCHIVE · V1</div><div>Videos are linked to their public hosts; the archive does not redistribute the films.</div></div></footer>
+
+<div class="modal" id="modal"><div class="modalbox">
+<button class="close" id="close">×</button>
+<div class="meta" id="mMeta"></div>
+<h2 id="mTitle"></h2><div class="brand" id="mBrand"></div><div class="credit" id="mCredit"></div>
+<p class="why" id="mWhy"></p><a id="mLink" class="biglink" target="_blank" rel="noopener">WATCH / SEARCH ↗</a>
+</div></div>
+
+<script>
+let ads=[], filtered=[];
+const watchedKey='indian-ad-archive-watched-v1';
+const watched=JSON.parse(localStorage.getItem(watchedKey)||'{}');
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(watchedKey,JSON.stringify(watched))}
+function unique(key){return [...new Set(ads.map(a=>a[key]).filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b)))}
+function fillSelect(id, values){let el=$(id); values.forEach(v=>{let o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o)})}
+function render(){
+ const q=$('search').value.toLowerCase().trim(), era=$('era').value, brand=$('brand').value, agency=$('agency').value, w=$('watched').value;
+ filtered=ads.filter(a=>{
+   const hay=[a.brand,a.campaign,a.agency,a.creative,a.why,a.year,a.era].join(' ').toLowerCase();
+   return (!q||hay.includes(q))&&(!era||a.era===era)&&(!brand||a.brand===brand)&&(!agency||a.agency===agency)&&(!w||(w==='yes'?watched[a.id]:!watched[a.id]));
+ });
+ $('count').textContent=`${filtered.length} FILMS`;
+ $('total').textContent=ads.length;
+ $('grid').innerHTML=filtered.length?filtered.map(card).join(''):`<div class="empty" style="grid-column:1/-1">Nothing found. Try another filter.</div>`;
+ document.querySelectorAll('.seen').forEach(b=>b.onclick=()=>{let id=b.dataset.id;watched[id]=!watched[id];save();render()});
+}
+function card(a){
+ const active=!!watched[a.id];
+ return `<article class="card">
+   <div class="meta"><span>${a.era}</span><span class="year">${a.year}</span></div>
+   <h2>${esc(a.campaign)}</h2><div class="brand">${esc(a.brand)}</div>
+   <div class="credit">${esc(a.agency)}${a.creative?' · '+esc(a.creative):''}</div>
+   <p class="why">${esc(a.why)}</p>
+   <div class="cardfoot"><a class="watch" href="${a.link}" target="_blank" rel="noopener">WATCH ↗</a><button class="seen ${active?'active':''}" data-id="${a.id}">${active?'✓ WATCHED':'○ WATCHED?'}</button></div>
+ </article>`
+}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+async function init(){
+ ads=await fetch('data/ads.json').then(r=>r.json());
+ ads=ads.map((a,i)=>({...a,id:String(i+1)}));
+ fillSelect('era',unique('era'));fillSelect('brand',unique('brand'));fillSelect('agency',unique('agency'));
+ ['search','era','brand','agency','watched'].forEach(id=>$(id).addEventListener('input',render));
+ $('random').onclick=()=>{if(!filtered.length)return;let a=filtered[Math.floor(Math.random()*filtered.length)];$('mMeta').textContent=`${a.era} · ${a.year}`;$('mTitle').textContent=a.campaign;$('mBrand').textContent=a.brand;$('mCredit').textContent=[a.agency,a.creative].filter(Boolean).join(' · ');$('mWhy').textContent=a.why;$('mLink').href=a.link;$('modal').classList.add('open')};
+ $('close').onclick=()=>$('modal').classList.remove('open');$('modal').onclick=e=>{if(e.target.id==='modal')$('modal').classList.remove('open')};
+ render();
+}
+init();
+</script>
+</body></html>
