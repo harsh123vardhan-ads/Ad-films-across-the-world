@@ -1,15 +1,21 @@
-# Indian Ad Archive — V1
+# The Ad Archive — V1.5
 
-A static, free-to-host archive of Indian advertising.
+A searchable archive of 500 advertising films from India and around the world.
 
-## Files
-- `index.html` — the website
-- `data/ads.json` — the archive database
+## What's new
+- 500 films
+- Country filter
+- Decade, brand and agency filters
+- Writer and director filters
+- Genre filter
+- Search across all metadata
+- Cherry & Co branding
+- Watched state stored in your browser
 
-## Run locally
-From this folder:
-`python3 -m http.server 8000`
-Then open http://localhost:8000
+## Updating the archive
+The site reads `data/ads.json`. The matching `data/ads.csv` is included as an easier spreadsheet-style master copy.
 
-## Deploy
-See the instructions in the chat response that accompanied this package.
+For the current GitHub Pages setup, replace `data/ads.json` when adding/editing records. A future version can connect the archive to a proper database/admin panel so films can be added through the website itself.
+
+## Credits
+Some historical creative credits are catalogued where they are widely documented; blanks mean the credit has not yet been catalogued. Film links currently point to YouTube searches rather than redistributing videos.
